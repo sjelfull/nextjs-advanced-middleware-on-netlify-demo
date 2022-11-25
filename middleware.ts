@@ -11,7 +11,7 @@ export async function middleware(nextRequest: NextRequest) {
   const bucket = nextRequest.cookies.get(COOKIE_NAME) || getBucket()
   const middlewareRequest = new MiddlewareRequest(nextRequest);
 
-  if (pathname.startsWith("/static")) {
+  if (pathname.startsWith("/static") || pathname === '/') {
     // Unlike NextResponse.next(), MiddlewareRequest.next() actually sends the request to the origin
     // So we can grab the response and transform it!
     const response = await middlewareRequest.next();
