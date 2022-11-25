@@ -26,7 +26,8 @@ export async function getStaticProps() {
 }
 
 const Page = ({ message, bucket }) => {
-  const hydrated = useHydrated();
+  // const hydrated = useHydrated();
+  // console.log('render! bucket is', bucket)
 
   return (
     <>
@@ -71,7 +72,7 @@ const Page = ({ message, bucket }) => {
           <h1 className="text-2xl font-bold leading-tight text-purple-300">A/B testing bucketed content.</h1>
 
           <div className="space-y-12 divide-y divide-purple-300">
-            {(!bucket || hydrated && bucket === 'a') && (
+            {(!bucket || bucket === 'a') && (
                 <div className="py-12" data-bucket="a">
                   <h2 className="text-2xl font-bold leading-tight ">Bucket A</h2>
                   <p className="py-4 text-lg ">This is bucket A content</p>
@@ -79,7 +80,7 @@ const Page = ({ message, bucket }) => {
                   <p className="py-4 text-lg ">This is bucket A content</p>
                 </div>
             )}
-            {(!bucket || hydrated && bucket === 'b') && (
+            {(!bucket || bucket === 'b') && (
             <div className="py-12" data-bucket="b">
               <h2 className="text-2xl font-bold leading-tight ">Bucket B</h2>
               <p className="py-4 text-lg ">This is bucket B content</p>
@@ -87,7 +88,7 @@ const Page = ({ message, bucket }) => {
               <p className="py-4 text-lg ">This is bucket B content</p>
             </div>
             )}
-            {(!bucket || hydrated && bucket === 'original') && (
+            {(!bucket || bucket === 'original') && (
             <div className="py-12" data-bucket="original">
               <h2 className="text-2xl font-bold leading-tight text-purple-300">Bucket Original</h2>
               <p className="py-4 text-lg text-purple-300">This is bucket Original content</p>
